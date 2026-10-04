@@ -1,0 +1,31 @@
+# Build output
+target/
+*.class
+
+# Reports
+allure-results/
+allure-report/
+.allure/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local overrides - never commit secrets
+*.local.properties
+.env
+
+# App binaries (download with scripts/download-apps.*)
+examples/apps/*
+!examples/apps/README.md
+
+# Appium
+appium.log

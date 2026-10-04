@@ -1,8 +1,8 @@
 # mobile-taf
 
-[![CI](https://github.com/alexxfromgit/mobile-taf/actions/workflows/ci.yml/badge.svg)](https://github.com/alexxfromgit/mobile-taf/actions/workflows/ci.yml)
-[![Android E2E](https://github.com/alexxfromgit/mobile-taf/actions/workflows/android-e2e.yml/badge.svg)](https://github.com/alexxfromgit/mobile-taf/actions/workflows/android-e2e.yml)
-[![Allure report](https://img.shields.io/badge/report-Allure-orange)](https://alexxfromgit.github.io/mobile-taf/)
+[![CI](https://github.com/Alexxfromgit/TAF-Mobile-JAVA/actions/workflows/ci.yml/badge.svg)](https://github.com/Alexxfromgit/TAF-Mobile-JAVA/actions/workflows/ci.yml)
+[![Android E2E](https://github.com/Alexxfromgit/TAF-Mobile-JAVA/actions/workflows/android-e2e.yml/badge.svg)](https://github.com/Alexxfromgit/TAF-Mobile-JAVA/actions/workflows/android-e2e.yml)
+[![Allure report](https://img.shields.io/badge/report-Allure-orange)](https://alexxfromgit.github.io/TAF-Mobile-JAVA/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Java 21](https://img.shields.io/badge/java-21-informational)
 
@@ -106,7 +106,7 @@ relying on them.
 
 ## Companion project
 
-[contract-taf](https://github.com/alexxfromgit/contract-taf) uses the same foundation (config, failure taxonomy,
+[TAF-Contract-Tests](https://github.com/Alexxfromgit/TAF-Contract-Tests) uses the same foundation (config, failure taxonomy,
 Allure categories, linter) for API contract testing: JSON Schema, OpenAPI, drift detection and API coverage.
 
 ## Contributing and license

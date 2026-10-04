@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 Please **do not open a public issue** for security problems. Use GitHub's
-[private vulnerability reporting](https://github.com/alexxfromgit/mobile-taf/security/advisories/new) instead.
+[private vulnerability reporting](https://github.com/Alexxfromgit/TAF-Mobile-JAVA/security/advisories/new) instead.
 You will get a response within a few days.
 
 ## Secrets in tests

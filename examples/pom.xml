@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.alexxfromgit</groupId>
+        <artifactId>mobile-taf-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>examples</artifactId>
+    <name>mobile-taf :: examples</name>
+    <description>Example UI tests for the Sauce Labs "My Demo App". Replace with your own.</description>
+
+    <properties>
+        <!-- Without a device only the static checks run. On a device or cloud:
+             ./mvnw verify -Denv=android-local -Dsuite=suites/smoke.xml   (or -Pe2e) -->
+        <env>android-local</env>
+        <suite>suites/static.xml</suite>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.alexxfromgit</groupId>
+            <artifactId>taf-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>e2e</id>
+            <properties>
+                <suite>suites/regression.xml</suite>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/${suite}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <taf.env>${env}</taf.env>
+                        <taf.project-dir>${project.basedir}</taf.project-dir>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                        <taf.reports-dir>${project.build.directory}/taf-reports</taf.reports-dir>
+                        <!-- Public demo credentials printed on the login screen of the Sauce Labs demo app.
+                             Real credentials are provided as environment variables / CI secrets, never in files. -->
+                        <users.standard.password>10203040</users.standard.password>
+                        <users.locked.password>10203040</users.locked.password>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

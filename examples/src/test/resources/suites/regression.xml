@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="mobile-taf regression" verbose="1">
+    <!-- needs no device: fails fast on undocumented tests, screens without identifiers, leaked secrets -->
+    <test name="Static checks">
+        <classes>
+            <class name="io.github.alexxfromgit.taf.mobile.examples.mydemo.lint.MetadataLintTest"/>
+        </classes>
+    </test>
+
+    <test name="Regression" thread-count="1">
+        <packages>
+            <package name="io.github.alexxfromgit.taf.mobile.examples.mydemo.tests"/>
+        </packages>
+    </test>
+
+    <test name="Framework reports">
+        <classes>
+            <class name="io.github.alexxfromgit.taf.mobile.core.MobileReports"/>
+        </classes>
+    </test>
+</suite>

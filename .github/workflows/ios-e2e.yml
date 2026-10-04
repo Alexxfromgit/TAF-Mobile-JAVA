@@ -1,0 +1,61 @@
+name: iOS E2E
+
+# Runs the example UI tests on an iOS simulator. macOS runners are slower and (for private repos) costlier,
+# so this workflow is manual. iOS locators in the examples are best-effort - verify with Appium Inspector.
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: TestNG suite
+        default: suites/smoke.xml
+      device:
+        description: Simulator name
+        default: iPhone 16
+
+permissions:
+  contents: read
+
+jobs:
+  ios:
+    runs-on: macos-15
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: Install Appium and the XCUITest driver
+        run: |
+          npm install -g appium@3
+          appium driver install xcuitest
+
+      - name: Download the demo app
+        run: bash scripts/download-apps.sh ios
+
+      - name: Run UI tests on the simulator
+        run: |
+          (appium --log-level warn > appium.log 2>&1 &)
+          VERSION=$(xcrun simctl list runtimes ios -j | python3 -c "import json,sys; print(json.load(sys.stdin)['runtimes'][-1]['version'])")
+          ./mvnw -B -ntp verify -Denv=ios-local -Dsuite=${{ github.event.inputs.suite }} \
+            "-Dcaps.ios.deviceName=${{ github.event.inputs.device }}" "-Dcaps.ios.platformVersion=$VERSION"
+
+      - name: Generate Allure report
+        if: always()
+        run: ./mvnw -B -ntp -pl examples allure:report
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: ios-allure-report
+          path: |
+            examples/target/site/allure-maven-plugin
+            appium.log
+          retention-days: 14
