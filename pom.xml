@@ -34,7 +34,7 @@
         <appium-java-client.version>10.1.1</appium-java-client.version>
         <selenium.version>4.50.0</selenium.version>
         <testng.version>7.12.0</testng.version>
-        <allure.version>2.35.5</allure.version>
+        <allure.version>3.0.0</allure.version>
         <allure-commandline.version>2.46.1</allure-commandline.version>
         <aspectj.version>1.9.25.1</aspectj.version>
         <jackson.version>2.21.3</jackson.version>
