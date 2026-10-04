@@ -1,0 +1,7 @@
+mobile-taf
+Copyright (c) 2026 alexxfromgit - MIT License (see LICENSE)
+
+The examples test the Sauce Labs "My Demo App" (https://github.com/saucelabs/my-demo-app-android and
+https://github.com/saucelabs/my-demo-app-ios). The app binaries are NOT included in this repository:
+scripts/download-apps.* downloads them from the official Sauce Labs releases. Locators in the example screens
+reference identifiers defined by those apps.
