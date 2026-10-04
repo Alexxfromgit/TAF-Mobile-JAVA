@@ -5,6 +5,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-04
+
 ### Added
 - Cross-platform screen model: `@Locate` / `@Using` / `How`, lazily re-located `UiElement`s with explicit waits,
   `Component`s scoped to a root, `ComponentList`, mixin interfaces, `@ScreenIdentifier` + `@WaitFor` readiness,
@@ -30,3 +32,6 @@ All notable changes to this project are documented here. The format follows
   product (or crashes) when a second product is opened in the same launch. The examples open one product per
   launch from the first six; see `Products` in the examples.
 - iOS locators in the examples are best-effort and have not been run on a simulator yet.
+
+[Unreleased]: https://github.com/Alexxfromgit/TAF-Mobile-JAVA/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/Alexxfromgit/TAF-Mobile-JAVA/releases/tag/v1.0.0
